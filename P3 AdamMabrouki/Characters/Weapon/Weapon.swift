@@ -9,6 +9,7 @@
 import Foundation
 
 class Weapon{
+     // MARK: - properties 
     let name: String
     let damage: Int
     

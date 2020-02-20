@@ -9,7 +9,7 @@
 import Foundation
 
 class Character {
-    
+      // MARK: - properties
     var type : String
     let name: String
     var health: Int
@@ -19,7 +19,7 @@ class Character {
     var isDead: Bool {
         return health <= 0
     }
-    
+     // MARK: - methodes 
     init(type: String, name: String, health: Int, weapon: Weapon, maxHealth: Int, healingPower: Int ){
         self.type = type
         self.name = name

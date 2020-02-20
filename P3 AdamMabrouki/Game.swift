@@ -17,7 +17,7 @@ final class  Game {
     
     // MARK: - methods
     
-    func start(){
+     func start(){
         for i in 0..<2 {
             print("")
             print("team N°\(i+1)")
@@ -30,7 +30,7 @@ final class  Game {
     
     
     /// la fonction permet aux deux equipes de choisir un heroe a soigner ou un enemie a attaquer,
-    func battle(){
+   private  func battle(){
         showPlayersTimes()
         
         while true {
@@ -80,48 +80,16 @@ final class  Game {
                     }else{
                         teams[i-1].description()
                     }
-                    
                     if i == 0 {
-                        //                    var  enemyCharacter = teams[i+1].characters[playerChoice()] // permet de choisir heroe dans l'equipe advairse
-                        //
-                        //                        print(" You have selected: \(enemyCharacter.name) \(enemyCharacter.type)")
-                        //                        curentCharacter.attack(enemy: enemyCharacter )
-                        
                         fightStatement(index: i, curentCharacter: curentCharacter)
                         if teams[i+1].teamisDead(){
                             return }
-                        
-                        //                        if enemyCharacter.isDead  {
-                        //
-                        //                            repeat {
-                        //                                print("")
-                        //                                print(" \(Team.uniqueTeamNames[i]) Please select a heroe:")
-                        //                                print("==================================================")
-                        //                                teams[+1].description()
-                        //                                enemyCharacter = teams[i+1].characters[playerChoice()] // Impose choix d'un enemy par mort
-                        //                                curentCharacter.attack(enemy: enemyCharacter )
-                        //                            } while enemyCharacter.isDead
-                        //                        }
                     } else {
-                        
-                        //                        var enemyCharacter = teams[i-1].characters[playerChoice()]  // permet de choisir heroe dans l'equipe advairse
-                        //                        print(" You have selected: \(enemyCharacter.name) \(enemyCharacter.type)")
-                        //                        curentCharacter.attack(enemy: enemyCharacter )
                         fightStatement(index: i, curentCharacter: curentCharacter)
                         
                         if teams[i-1].teamisDead()  {
                             return
                         }
-                        //                        if enemyCharacter.isDead  {
-                        //
-                        //                            repeat {  print("thise heroe is dead")
-                        //                                print(" \(Team.uniqueTeamNames[i]) Please select a heroe:")
-                        //                                print("==================================================")
-                        //                                teams[i-1].description()
-                        //                                enemyCharacter = teams[i-1].characters[playerChoice()]
-                        //                                curentCharacter.attack(enemy: enemyCharacter ) // Impose choix d'un enemy par mort
-                        //                            } while enemyCharacter.isDead
-                        //                        }
                     }
                 case 2:
                     print("with heroe do you want to heal 💉:")
@@ -157,26 +125,18 @@ final class  Game {
         //        }else{
         //            teamIndex = index - 1
         //        }
-    
-        var enemyCharacter = teams[teamIndex].characters[playerChoice()-1]  // permet de choisir heroe dans l'equipe advairse
+        
+        var enemyCharacter = teams[teamIndex].characters[playerChoice()-1]
         print(" You have selected: \(enemyCharacter.name) \(enemyCharacter.type)")
-        curentCharacter.attack(enemy: enemyCharacter )
-        
-        if teams[teamIndex].teamisDead()  {
-                                   return
-                               }
-        
-        if enemyCharacter.isDead  {
-            
-            repeat {  print("thise heroe is dead")
-                print(" \(Team.uniqueTeamNames[index]) Please select a heroe:")
-                print("==================================================")
-                teams[teamIndex].description()
-                enemyCharacter = teams[teamIndex].characters[playerChoice()-1]
-                curentCharacter.attack(enemy: enemyCharacter ) // Impose choix d'un enemy par mort
-            } while enemyCharacter.isDead
+        while enemyCharacter.isDead{
+            print("")
+            print("thise heroe is already dead ")
+            print(" \(Team.uniqueTeamNames[index]) Please select a heroe:")
+            print("==================================================")
+            teams[teamIndex].description()
+            enemyCharacter = teams[teamIndex].characters[playerChoice()-1]
         }
-        
+        curentCharacter.attack(enemy: enemyCharacter )
     }
     
     func showGameStat(){

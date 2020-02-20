@@ -23,7 +23,7 @@ class Team {
      // MARK: - methods
     
     /// choisie un nom de heroe unique
-    func chosenCharactersName() -> String {
+    private func chosenCharactersName() -> String {
         
         var username = ""
         repeat {
@@ -42,7 +42,7 @@ class Team {
     }
     
     /// choisie un nom d'équipe unique 
-    func chosenTeamName() -> String {
+   private func chosenTeamName() -> String {
         print("Please enter you team name")
         var userTeamName = ""
         repeat {
@@ -65,8 +65,8 @@ class Team {
     
     
     
-    /// ajoute un heroe dans chaque equipe
-    func choseCharacters()  {
+    /// ajoute un heroe dans chaque equipe en fonction du choix du joueur
+    private func choseCharacters()  {
         var Userchoice = 0
         for i in 0..<3 {
             print("")
@@ -137,3 +137,4 @@ class Team {
 
     
 }
+
