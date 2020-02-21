@@ -9,7 +9,7 @@
 import Foundation
 
 class Character {
-      // MARK: - properties
+    // MARK: - properties
     var type : String
     let name: String
     var health: Int
@@ -19,7 +19,7 @@ class Character {
     var isDead: Bool {
         return health <= 0
     }
-     // MARK: - methodes 
+    // MARK: - methodes
     init(type: String, name: String, health: Int, weapon: Weapon, maxHealth: Int, healingPower: Int ){
         self.type = type
         self.name = name
@@ -29,7 +29,7 @@ class Character {
         self.healingPower = healingPower
         
     }
-    
+    /// le heroe  attaque  l'enemie si il est vivant
     func attack(enemy: Character){
         if enemy.health > 0 {
             enemy.health -= weapon.damage
@@ -46,7 +46,7 @@ class Character {
         
     }
     
-    
+    /// fonction permettant de soigner
     func healing(heroe:Character){
         if heroe.health <= 0 {
             print ("\(heroe.name) is dead, he can't be ill")
@@ -67,7 +67,7 @@ class Character {
     }
     
     
-    
+    /// fonction permettant d'acceder a la décription du personnage 
     func description(index: Int ){
         if isDead{
             print(" \(index+1)- 👾\(name) \(type) is DEAD; ")
@@ -79,6 +79,6 @@ class Character {
         
     }
     
-
+    
     
 }

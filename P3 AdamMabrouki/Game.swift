@@ -17,10 +17,10 @@ final class  Game {
     
     // MARK: - methods
     
-     func start(){
+    func start(){
         for i in 0..<2 {
             print("")
-            print("team N°\(i+1)")
+            print("Player N°\(i+1)")
             teams.append(Team())
             // ajoutes toutes les methodes de la classe Team et créé donc deux index dans le tableau teams pour chaque equipe
         }
@@ -30,7 +30,7 @@ final class  Game {
     
     
     /// la fonction permet aux deux equipes de choisir un heroe a soigner ou un enemie a attaquer,
-   private  func battle(){
+    private  func battle(){
         showPlayersTimes()
         
         while true {
@@ -46,16 +46,16 @@ final class  Game {
                 
                 tresure(heroe: curentCharacter) // fais apparaitre une arme aleatoirement juste apres le choix du héroe
                 
-                if curentCharacter.isDead {
+                while curentCharacter.isDead {
                     
-                    repeat {  print("thise heroe is dead")
-                        print(" \(teams[i].playerTeamName) Please select a heroe:")
-                        print("==================================================")
-                        teams[i].description()
-                        
-                        curentCharacter = teams[i].characters[playerChoice() - 1] // impose choix d'un heroe pas mort
-                    } while curentCharacter.isDead
+                    print("👾\(curentCharacter.name) \(curentCharacter.type)heroe is dead")
+                    print(" \(teams[i].playerTeamName) Please select a heroe:")
+                    print("==================================================")
+                    teams[i].description()
+                    
+                    curentCharacter = teams[i].characters[playerChoice() - 1] // impose choix d'un heroe pas mort
                 }
+                
                 print(" You have selected: 👾\(curentCharacter.name) \(curentCharacter.type)")
                 print("====================================================================")
                 var userChoice = 0
@@ -92,7 +92,7 @@ final class  Game {
                         }
                     }
                 case 2:
-                    print("with heroe do you want to heal 💉:")
+                    print("witch heroe do you want to heal 💉:")
                     teams[i].description()
                     
                     var charachterToHeal = teams[i].characters[playerChoice() - 1]
@@ -117,6 +117,7 @@ final class  Game {
         }
     }
     
+    /// choie de l'énemie a attaquer si il est vivant
     func fightStatement(index: Int, curentCharacter: Character) {
         let teamIndex: Int = index == 0 ? index + 1 : index - 1
         //        structure ternaire
@@ -127,11 +128,11 @@ final class  Game {
         //        }
         
         var enemyCharacter = teams[teamIndex].characters[playerChoice()-1]
-        print(" You have selected: \(enemyCharacter.name) \(enemyCharacter.type)")
+        print(" You have selected: 👾\(enemyCharacter.name) \(enemyCharacter.type)")
         while enemyCharacter.isDead{
             print("")
-            print("thise heroe is already dead ")
-            print(" \(Team.uniqueTeamNames[index]) Please select a heroe:")
+            print(" 👾\(enemyCharacter.name) \(enemyCharacter.type)is already dead ")
+            print(" \(Team.uniqueTeamNames[index]) Please select a other enemy :")
             print("==================================================")
             teams[teamIndex].description()
             enemyCharacter = teams[teamIndex].characters[playerChoice()-1]
@@ -139,11 +140,11 @@ final class  Game {
         curentCharacter.attack(enemy: enemyCharacter )
     }
     
+    
+    /// affiche l'équipe gagante et le nombre de round a la fin
     func showGameStat(){
         
-        
         for i in 0...2 {
-            
             if teams[i].teamisDead() == false { // choisie l'équipe encore vivante
                 showPlayersTimes()
                 print("🎖 Bravo !! \(teams[i].playerTeamName) Team have won the game 🏆🥇🎖 ")
@@ -155,7 +156,7 @@ final class  Game {
     }
     
     
-    
+    /// Affiche a la composition des deux équipes
     func showPlayersTimes(){
         print("============================")
         print("============================")
@@ -170,12 +171,10 @@ final class  Game {
             print("")
             print("=========================================")
         }
-        
     }
     
+    /// Apparition d'un trésor aleatoire
     func tresure(heroe: Character ){
-        
-        
         let magicWepon = Sword()
         let ramdomNumber = Int.random(in: 1...5) // fais une boucle de 5
         
@@ -191,7 +190,7 @@ final class  Game {
     }
     
     
-    
+    /// permet au joueur de faire un choie en sélectionnant 1,2,3 
     func playerChoice() -> Int{     // permet au joueur de faire un choix en rentrant un numéroe
         var choice = 0
         

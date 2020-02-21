@@ -7,7 +7,6 @@
 //
 
 import Foundation
-
+// appelle la fonction start qui fait démarrer le jeux 
 let game = Game()
-
 game.start()
